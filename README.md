@@ -12,7 +12,7 @@ This repository contains a Docker-based development environment for Symfony appl
 
 1. Clone this repository:
 ```bash
-git clone git@github.com:Webanimus/symfony-dev-docker-base.git
+git clone https://github.com/Webanimus/symfony-dev-docker-base
 cd symfony-dev-docker-base
 ```
 
