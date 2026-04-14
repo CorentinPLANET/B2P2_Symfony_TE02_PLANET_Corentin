@@ -33,7 +33,7 @@ class User
     #[ORM\Column]
     private ?\DateTime $date = null;
 
-    #[ORM\Column(type: "int", enumType: RoleEnum::class)]
+    #[ORM\Column(type: "smallint", enumType: RoleEnum::class)]
     private RoleEnum $role;
 
     /**
@@ -107,7 +107,7 @@ class User
         return $this;
     }
 
-    public function getRole(): RoleEnum
+    public function getRole(): ?RoleEnum
     {
         return $this->role;
     }
@@ -118,6 +118,7 @@ class User
 
         return $this;
     }
+
     public function __construct()
     {
         $this->date = new \Datetime();
