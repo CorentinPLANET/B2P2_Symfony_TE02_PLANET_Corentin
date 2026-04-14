@@ -45,10 +45,22 @@ final class ConnexionController extends AbstractController
         }
     }
     #[Route('/homepage', name: 'app_index')]
-    public function homepage(): Response
+    public function homepage(Request $request): Response
     {
+        $session = $request->getSession();
+        if ($session->get("userId") == Null) {
+            return $this->redirectToRoute('app_connexion_index', [], Response::HTTP_SEE_OTHER);
+        }
         return $this->render('homepage/index.html.twig', [
-            'controller_name' => 'ConnexionController',
+            "userId" => $session->get("userId")
         ]);
+    }
+    #[Route('/logout', name: 'app_logout')]
+    public function logout(Request $request): Response
+    {
+        $session = $request->getSession();
+        $session->invalidate();
+
+        return $this->redirectToRoute('app_connexion');
     }
 }

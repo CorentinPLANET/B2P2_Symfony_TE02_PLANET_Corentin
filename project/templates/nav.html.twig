@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+	<link href="{{asset('styles/nav.css')}}">
+{% endblock %}
+
+{% block body %}
+	<nav class="nav">
+		<ul class="container">
+			<li class="nav__item">
+				<a href="{{ path('app_notice_index') }}">Annonces</a>
+			</li>
+			<li class="nav__item">
+				<a href="{{ path('app_user_index') }}">
+					Utilisateurs</a>
+			</li>
+			<li class="nav__item">
+				<a href="{{ path('app_user_show', {'id': userId}) }}">Profil</a>
+			</li>
+		</ul>
+	</nav>
+	{% block main %}{% endblock %}
+{% endblock %}
