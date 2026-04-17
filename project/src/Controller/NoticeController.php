@@ -15,7 +15,7 @@ use Symfony\Component\Routing\Attribute\Route;
 final class NoticeController extends AbstractController
 {
     #[Route(name: 'app_notice_index', methods: ['GET'])]
-    public function index(NoticeRepository $noticeRepository): Response
+    public function index(NoticeRepository $noticeRepository, Request $request): Response
     {
         return $this->render('notice/index.html.twig', [
             'notices' => $noticeRepository->findAll(),
@@ -71,7 +71,7 @@ final class NoticeController extends AbstractController
     #[Route('/{id}', name: 'app_notice_delete', methods: ['POST'])]
     public function delete(Request $request, Notice $notice, EntityManagerInterface $entityManager): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$notice->getId(), $request->getPayload()->getString('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $notice->getId(), $request->getPayload()->getString('_token'))) {
             $entityManager->remove($notice);
             $entityManager->flush();
         }

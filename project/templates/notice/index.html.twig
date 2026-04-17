@@ -1,41 +1,42 @@
-{% extends 'base.html.twig' %}
+{% extends 'nav.html.twig' %}
 
-{% block title %}Notice index{% endblock %}
+{% block title %}Notice index
+{% endblock %}
 
-{% block body %}
-    <h1>Notice index</h1>
+{% block main %}
+	<h1>Notice index</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Title</th>
-                <th>Description</th>
-                <th>Image</th>
-                <th>Date</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for notice in notices %}
-            <tr>
-                <td>{{ notice.id }}</td>
-                <td>{{ notice.title }}</td>
-                <td>{{ notice.description }}</td>
-                <td>{{ notice.image }}</td>
-                <td>{{ notice.date ? notice.date|date('Y-m-d H:i:s') : '' }}</td>
-                <td>
-                    <a href="{{ path('app_notice_show', {'id': notice.id}) }}">show</a>
-                    <a href="{{ path('app_notice_edit', {'id': notice.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="6">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>Title</th>
+				<th>Description</th>
+				<th>Image</th>
+				<th>Date</th>
+				<th>actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for notice in notices %}
+				<tr>
+					<td>{{ notice.id }}</td>
+					<td>{{ notice.title }}</td>
+					<td>{{ notice.description }}</td>
+					<td>{{ notice.image }}</td>
+					<td>{{ notice.date ? notice.date|date('Y-m-d H:i:s') : '' }}</td>
+					<td>
+						<a href="{{ path('app_notice_show', {'id': notice.id}) }}">show</a>
+						<a href="{{ path('app_notice_edit', {'id': notice.id}) }}">edit</a>
+					</td>
+				</tr>
+			{% else %}
+				<tr>
+					<td colspan="6">no records found</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
 
-    <a href="{{ path('app_notice_new') }}">Create new</a>
+	<a href="{{ path('app_notice_new') }}">Create new</a>
 {% endblock %}

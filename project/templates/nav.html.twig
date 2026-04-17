@@ -14,7 +14,7 @@
 					Utilisateurs</a>
 			</li>
 			<li class="nav__item">
-				<a href="{{ path('app_user_show', {'id': userId}) }}">Profil</a>
+				<a href="{{ path('app_user_show', {'id': app.session.get('userId') }) }}">Profil</a>
 			</li>
 		</ul>
 	</nav>

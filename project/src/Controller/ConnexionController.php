@@ -51,9 +51,7 @@ final class ConnexionController extends AbstractController
         if ($session->get("userId") == Null) {
             return $this->redirectToRoute('app_connexion_index', [], Response::HTTP_SEE_OTHER);
         }
-        return $this->render('homepage/index.html.twig', [
-            "userId" => $session->get("userId")
-        ]);
+        return $this->render('homepage/index.html.twig');
     }
     #[Route('/logout', name: 'app_logout')]
     public function logout(Request $request): Response
